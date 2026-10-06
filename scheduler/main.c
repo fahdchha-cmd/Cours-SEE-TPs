@@ -59,7 +59,10 @@ int main(void) {
         uint64_t temps = get_time_ms();
         int i = 0;
         for (i ; i<task_count ;i=i+1) {
-            printf("temps: %d ms\n", (uint64_t)get_time_ms());
+            if (tasks[i].run_count < tasks[i].max_runs) {
+
+                tasks[i].run_count++;
+            }
         }        
         // TODO: complete the loop
     }
