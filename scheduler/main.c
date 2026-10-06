@@ -60,12 +60,14 @@ int main(void) {
         int i = 0;
         for (i ; i<task_count ;i=i+1) {
             if (tasks[i].run_count < tasks[i].max_runs) {
-
+                if (temps - tasks[i].last_run_ms >= tasks[i].period_ms) {
+                tasks[i].func();
+                tasks[i].last_run_ms = temps;
                 tasks[i].run_count++;
-            }
-        }        
+                }
+            }        
         // TODO: complete the loop
+        }
     }
-
     return 0;
 }
